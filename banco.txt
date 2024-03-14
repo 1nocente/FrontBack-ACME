@@ -1,45 +1,59 @@
-DROP DATABASE db_acme_filmes_turma_ba;
-CREATE DATABASE db_acme_filmes_turma_ba;
-USE db_acme_filmes_turma_ba;
-CREATE TABLE tbl_filme(
-	id INT NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(80) NOT NULL,
-    sinopse TEXT NOT NULL,
-    duracao TIME NOT NULL,
-    data_lancamento DATE NOT NULL,
-    data_relancamento DATE,
-    foto_capa VARCHAR(200) NOT NULL,
-    valor_unitario FLOAT,    
-    UNIQUE KEY(id),
-	UNIQUE INDEX(id)
-    );
-    
-    SELECT * FROM tbl_filme;
-    
-    desc tbl_filme;
+create database db_acme_filmes_turma_ba;
+use db_acme_filmes_turma_ba;
 
-INSERT INTO tbl_filme(nome,sinopse,duracao,data_lancamento,foto_capa,valor_unitario) VALUES (
-	"Gente Grande 2",
-    "Lenny (Adam Sandler), Eric (Kevin James), Kurt (Chris Rock) e Marcus (David Spade) voltam a morar na mesma cidade. Lá, suas vidas seguem o curso natural dos adultos, seja pela existência dos problemas com as esposas para uns, com os filhos para outros, ou tudo junto e misturado. A coisa dá uma complicada quando os marmanjos pretendiam matar a saudade num dia de folga e acabam encarando os jovens da região, que agora dominam o lugar. É quando eles acabam tendo que enfrentar alguns fantasmas do passado, entre eles a covardia diante de valentões e o famigerado bullyng na escola. Mas algumas surpresas estão para acontecer, como a chegada de um filho rebelde para Marcus domar, uma possível gravidez e uma festa de arromba, que não vai deixar pedra sobre pedra.",
-    '01:41:00',
-    '2013-08-16',
-    'https://br.web.img3.acsta.net/c_310_420/pictures/210/049/21004903_20130510170049514.jpg',
-    20.0
-);
+create table tbl_filme (
+id int not null auto_increment primary key,
+nome varchar(80) not null,
+sinopse text not null,
+duracao time not  null, 
+data_lancamento date not null,
+data_relancamento date,
+foto_capa varchar(200) not null,
+valor_unitario float, 
 
-INSERT INTO tbl_filme(nome,sinopse,duracao,data_lancamento,foto_capa,valor_unitario) VALUES (
-	"Zootopia",
-     "Filme dos animais",
-    '01:31:00',
-    '2015-08-16',
-    'https://m.media-amazon.com/images/I/81hUUPU8PbL._AC_UF1000,1000_QL80_.jpg',
-    20.0
+
+unique key (id),
+unique index(id)
+
 );
 
 
+show tables;
 
-SELECT * FROM tbl_filme;
-SELECT id FROM tbl_filme ORDER BY id DESC LIMIT 1;
-#last_insert_id() - permite retornar o último ID inserido em uma tabela
+
+
+select * from tbl_filme;
+
+insert into tbl_filme(nome, sinopse, duracao, data_lancamento, foto_capa, valor_unitario )
+values(
+'Patos!',
+'Patos! é um filme infantil de animação e aventura dirigido por Benjamin Renner (A Raposa Má, Ernest et Célestine) e Guylo Homsy (Meu Malvado Favorito, O Lorax - Em Busca da Trúfula Perdida). A trama mostra uma família de patos formada por Mack (Kumail Nanjiani) - o pai superprotetor -, Pam (Elizabeth Banks) - a mãe exploradora -, e os filhos Dax (Caspar Jennings) e Gwen (Tresi Gazal). Enquanto Pam tem o desejo de mostrar o mundo aos filhos, Mack só quer manter a família em segurança no lago em que vivem na Nova Inglaterra. Porém, quando um novo grupo de patos aparece no local com uma série de histórias sobre viagens incríveis, a família concorda em partir rumo à Nova York, para visitar a Jamaica tropical. Mas a viagem começa a se complicar.',
+'01:22:00',
+'2024-1-4',
+'https://br.web.img3.acsta.net/c_310_420/pictures/23/12/07/19/08/2800297.jpg',
+'10.00'
+);
+
+insert into tbl_filme(nome, sinopse, duracao, data_lancamento, foto_capa, valor_unitario )
+values(
+'Wish - O Poder dos Desejos!',
+'Em Wish: O Poder dos Desejos, conhecemos a história de Asha (Ariana DeBose) que em uma medida de desespero para salvar sua terra natal de inimigos, pede com todas as suas forças a ajuda de uma Estrela, que lhe atende. Em companhia de seu bode, Valentino, eles navegam para Rosas, o reino dos desejos, onde os desejos podem literalmente se tornar realidade.',
+'01:42:00',
+'2024-1-4',
+'https://br.web.img2.acsta.net/c_310_420/pictures/23/12/19/15/53/5419585.jpg',
+'15.00'
+);
+
+select * from tbl_filme;
+
+select * from tbl_filme where nome like 'Wi%';
+
+select * from tbl_filme where id = 1;
+
+select id from tbl_filme order by id desc limit 1;
+/* indicar quantos quantos registros tem na tabela*/
+
+select cast(last_insert_id() as DECIMAL) as id from tbl_filme limit 1;
+/*last_insert_id() - indica qual o id do ultimo insert*/
 #cast() - permite realizar a conversão de tipo de dados durante o select
-SELECT cast(last_insert_id() AS DECIMAL) AS id FROM tbl_filme LIMIT 1;
+  

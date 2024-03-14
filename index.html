@@ -1,49 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./app.js" type="module" defer></script>
-    <title>Acme</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./app.js" type="module" defer></script>
+  <title>Acme</title>
 </head>
-<body class="">
 
-    <header class= " h-20 bg-black p-0 flex items-center space-x-16 justify-between relative z-10">
-  
-      <nav class="ml-12 flex items-center justify-between space-x-16">
-        <img class="mt-9" src="./src/styles/img/LOGO.png" alt="">
-  
-        <div class="pl-14 flex items-center space-x-8">
-          <a href="#" class="font-light text-3xl text-white">HOME</a>
-          <a href="#" class="font-light text-3xl text-white ">FILMES</a>
-          <a href="#" class="font-light text-3xl text-white ">SERIES</a>
-        </div>
-      </nav>
-  
-      <div class=" flex items-center space-x-3">
-        <img class="cursor-pointer" src="./src/styles/img/busca.png" alt="">
-        <img class="cursor-pointer" src="./src/styles/img/conta.png" alt="">
+<body id="body" class="overflow-x-hidden">
+
+  <div class="infoFilme" style="visibility: hidden;" id="infoFilme">
+    <img class="h-60 mt-28" id="imagemInfoFilme" alt="">
+    <h1 class="text-3xl text-white font-black" id="tituloInfoFilme"> Titulo: </h1>
+    <h1 class="text-3xl text-white font-black" id="sinopseInfoFilme"> Sinopse: </h1>
+    <h1 class="text-3xl text-white font-black" id="lancamentoInfoFilme"> Data de Lançamento: </h1>
+    <h1 class="text-3xl text-white font-black" id="relancamentoInfoFilme"> Data de Relançamento: </h1>
+    <h1 class="text-3xl text-white font-black" id="duracaoInfoFilme"> Duração: </h1>
+    <h1 class="text-3xl text-white font-black" id="precoInfoFilme"> Preço: </h1>
+  </div>
+  <style>
+    .infoFilme{
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.852);
+      z-index: 5;
+    }
+  </style>
+  <header class=" h-20 bg-black p-0 flex items-center space-x-16 justify-between relative z-10">
+
+    <nav class="ml-12 flex items-center justify-between space-x-16">
+      <img class="mt-9" src="./src/styles/img/LOGO.png" alt="">
+
+      <div class="pl-14 flex items-center space-x-8">
+        <a href="#" class="font-light text-3xl text-white">HOME</a>
+        <a href="#" class="font-light text-3xl text-white ">FILMES</a>
+        <a href="#" class="font-light text-3xl text-white ">SERIES</a>
       </div>
-  
-    </header>
+    </nav>
 
-<!-- Linha branca abaixo do header -->
-    <div class="h-0.5 bg-white"></div>
+    <div class=" flex items-center space-x-3">
+      <img class="cursor-pointer" src="./src/styles/img/busca.png" alt="">
+      <img class="cursor-pointer" src="./src/styles/img/conta.png" alt="">
+    </div>
 
-    <!-- Carrossel no main -->
-    <main class= "bg-black bg-no-repeat relative h-screen bg-">
-        <div id="imageCarousel" class="flex justify-center h-full">
-          <img id="logoinicio" class="mt-44 h-80" src="./src/styles/img/LOGO.png" alt="LOGO">
-        </div>
+  </header>
 
-        
-        <div id="Filmes" class="absolute bottom-0 left-0 w-full h-50 bg-black bg-transparent-">
-          <h1 class="left-0 bottom-80 font-light text-3xl text-white">FILMES</h1>
-          <div id="listaFilmes" class="flex overflow-x-auto p-4 gap-4">
-              <!-- A lista de filmes será adicionada aqui dinamicamente -->
-          </div>
+  <!-- Linha branca abaixo do header -->
+  <div class="h-0.5 bg-white"></div>
+
+  <!-- Carrossel no main -->
+  <main class="bg-black bg-no-repeat relative h-screen bg-">
+    <div id="imageCarousel" class="flex justify-center h-full">
+      <img id="logoinicio" class="mt-44 h-80" src="./src/styles/img/LOGO.png" alt="LOGO">
+    </div>
+
+
+    <div id="Filmes" class="absolute bottom-0 left-0 w-full h-50 bg-black bg-transparent-">
+      <h1 class="left-0 bottom-80 font-light text-3xl text-white">FILMES</h1>
+      <div id="listaFilmes" class="flex overflow-x-auto p-4 gap-4">
+        <!-- A lista de filmes será adicionada aqui dinamicamente -->
       </div>
-    </main>            
-    </body>
+    </div>
+  </main>
+</body>
+
 </html>

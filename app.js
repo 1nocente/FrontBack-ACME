@@ -2,6 +2,7 @@
 
 import { getFilmes, getImage } from "./filmes.js";
 
+const campoInfoFilme = document.getElementById('infoFilme');
 function preloadImages(filmes) {
     filmes.forEach(filme => {
         const img = new Image();
@@ -139,7 +140,14 @@ function Lista () {
 
       divFilme.appendChild(imagemFilme);
       listaFilmes.appendChild(divFilme);
+      
+      divFilme.addEventListener('click', ()=>{abrirCampoInfo(filme.id)})
     });
+  }
+
+  function abrirCampoInfo(id){
+    campoInfoFilme.style.visibility='visible'
+    console.log(id)
   }
 
   carregarFilmes();
@@ -172,6 +180,9 @@ const filmes = listaFilmes;
     const novaDiv = document.createElement('div');
     novaDiv.classList.add('bg-black', 'bg-opacity-75', 'absolute', 'top-0', 'left-0', 'w-full', 'h-full', 'flex', 'justify-center', 'items-center');
 
+    const body = document.getElementById('body')
+    body.style.display='none'
+    novaDiv
     const conteudoDiv = `
       <div class="w-full max-w-md bg-white rounded-lg p-4">
         <img src="${filme.imagem}" class="w-full h-auto mb-4" />
