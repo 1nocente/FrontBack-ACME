@@ -1,0 +1,45 @@
+DROP DATABASE db_acme_filmes_turma_ba;
+CREATE DATABASE db_acme_filmes_turma_ba;
+USE db_acme_filmes_turma_ba;
+CREATE TABLE tbl_filme(
+	id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(80) NOT NULL,
+    sinopse TEXT NOT NULL,
+    duracao TIME NOT NULL,
+    data_lancamento DATE NOT NULL,
+    data_relancamento DATE,
+    foto_capa VARCHAR(200) NOT NULL,
+    valor_unitario FLOAT,    
+    UNIQUE KEY(id),
+	UNIQUE INDEX(id)
+    );
+    
+    SELECT * FROM tbl_filme;
+    
+    desc tbl_filme;
+
+INSERT INTO tbl_filme(nome,sinopse,duracao,data_lancamento,foto_capa,valor_unitario) VALUES (
+	"Gente Grande 2",
+    "Lenny (Adam Sandler), Eric (Kevin James), Kurt (Chris Rock) e Marcus (David Spade) voltam a morar na mesma cidade. Lá, suas vidas seguem o curso natural dos adultos, seja pela existência dos problemas com as esposas para uns, com os filhos para outros, ou tudo junto e misturado. A coisa dá uma complicada quando os marmanjos pretendiam matar a saudade num dia de folga e acabam encarando os jovens da região, que agora dominam o lugar. É quando eles acabam tendo que enfrentar alguns fantasmas do passado, entre eles a covardia diante de valentões e o famigerado bullyng na escola. Mas algumas surpresas estão para acontecer, como a chegada de um filho rebelde para Marcus domar, uma possível gravidez e uma festa de arromba, que não vai deixar pedra sobre pedra.",
+    '01:41:00',
+    '2013-08-16',
+    'https://br.web.img3.acsta.net/c_310_420/pictures/210/049/21004903_20130510170049514.jpg',
+    20.0
+);
+
+INSERT INTO tbl_filme(nome,sinopse,duracao,data_lancamento,foto_capa,valor_unitario) VALUES (
+	"Zootopia",
+     "Filme dos animais",
+    '01:31:00',
+    '2015-08-16',
+    'https://m.media-amazon.com/images/I/81hUUPU8PbL._AC_UF1000,1000_QL80_.jpg',
+    20.0
+);
+
+
+
+SELECT * FROM tbl_filme;
+SELECT id FROM tbl_filme ORDER BY id DESC LIMIT 1;
+#last_insert_id() - permite retornar o último ID inserido em uma tabela
+#cast() - permite realizar a conversão de tipo de dados durante o select
+SELECT cast(last_insert_id() AS DECIMAL) AS id FROM tbl_filme LIMIT 1;

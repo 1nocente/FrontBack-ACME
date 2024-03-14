@@ -1,0 +1,49 @@
+{
+    "filmes": [
+      {
+        "id": 1,
+        "titulo": "Kung Fu Panda 4",
+        "sinopse": "Po, o Grande Dragão Guerreiro, é escolhido como Líder Espiritual do Vale da Paz e enfrenta desafios ao treinar a relutante raposa Zhen. Enquanto isso, a feiticeira Camaleoa tenta ressuscitar vilões derrotados por Po, intensificando a ameaça.",
+        "duracao": "135 minutos",
+        "imagem": "./src/styles/img/Panda4.png",
+        "preco": "$24.99",
+        "dataLancamento": "2024-03-21"
+      },
+      {
+        "id": 2,
+        "titulo": "Aranhaverso",
+        "sinopse": "Homem araranha na matrix",
+        "duracao": "175 minutos",
+        "imagem": "./src/styles/img/Aranhaverso.jpeg",
+        "preco": "$9.99",
+        "dataLancamento": "2023-03-14"
+      },
+      {
+      "id": 3,
+        "titulo": "FNAF o Filme",
+        "sinopse": "Filme do jogo FNAN",
+        "duracao": "148 minutos",
+        "imagem": "./src/styles/img/FNAF.png",
+        "preco": "$11.50",
+        "dataLancamento": "2022-07-08"
+      },
+      {
+      "id": 4,
+        "titulo": "O menino e a garça",
+        "sinopse": "O menino e a garça",
+        "duracao": "154 minutos",
+        "imagem": "./src/styles/img/MeninoGarca.png",
+        "preco": "$10.99",
+        "dataLancamento": "2024-10-14"
+      },
+      {
+        "id": 5,
+        "titulo": "Wish",
+        "sinopse": "Uma aventura da Disney",
+        "duracao": "139 minutos",
+        "imagem": "./src/styles/img/Wish.png",
+        "preco": "$14.50",
+        "dataLancamento": "2023-09-10"
+      }
+    ]
+  }

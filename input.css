@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#Filmes {
+    scroll-padding: 0 16px; /* Ajuste conforme necessário */
+}
