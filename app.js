@@ -9,20 +9,6 @@ function preloadImages(filmes) {
         img.src = filme.imagem;
     });
 }
-console.log('teste')
-
-
-// Seleciona a imagem pelo ID
-    const logoInicio = document.getElementById('logoinicio');
-
-    // Função para esconder a imagem após 2 segundos
-    function esconderLogo() {
-        logoInicio.style.display = 'none';
-    }
-
-    // Agendar a função para ser chamada após 2 segundos
-    setTimeout(esconderLogo, 3500);
-
 // function carousel antiga
 // document.addEventListener('DOMContentLoaded', function () {
 //     const imageCarousel = document.getElementById('imageCarousel');
@@ -60,167 +46,175 @@ console.log('teste')
     
 // });
 
-function carousel () {
-  const imageCarousel = document.getElementById('imageCarousel');
-  const filmTitle = document.getElementById('filmTitle');
-  let currentIndex = 0;
+// function carousel () {
+//   const imageCarousel = document.getElementById('imageCarousel');
+//   const filmTitle = document.getElementById('filmTitle');
+//   let currentIndex = 0;
 
-  // function carregarFilmes() {
-  //     fetch('./') // Altere o caminho conforme necessário
-  //         .then(response => response.json())
-  //         .then(data => {
-  //             const filmes = data.filmes;
-  //             preloadImages(filmes)
-  //             setInterval(() => avancarFilme(filmes), 5000);
-  //         })
-  //         .catch(error => console.error('Erro ao carregar filmes:', error));
-  // }
+//   async function carregarFilme() {
+
+//     const listaFilmesDatabase = await getFilmes();
+//     const imageCarousel = document.getElementById('imageCarousel');
+//     const filmes = []
+  
+//     // Carregar todas as imagens
+//     listaFilmesDatabase.forEach(filme => {
+
+//       const img = document.createElement('img');
+//       img.src = filme.foto_capa;
+//       imageCarousel.appendChild(img);
+//     });
+  
+//     // Trocar imagens automaticamente
+//     let currentIndex = 0;
+//     setInterval(() => {
+//       currentIndex = (currentIndex + 1) % listaFilmesDatabase.length;
+//       const img = imageCarousel.children[currentIndex];
+//       img.src = listaFilmesDatabase[currentIndex].foto_capa;
+//     }, 2000); // Trocar imagem a cada 3 segundos
+  
+//     // Lidar com erros de carregamento
+//     imageCarousel.addEventListener('error', (event) => {
+//       const img = event.target;
+//       console.log(`Erro ao carregar imagem: ${img.src}`); // Exibir mensagem de erro no console
+//     });
+  
+//   }
+
+//   carregarFilme();
+
+
+  
+// }
+
+// carousel()
+
+function carousel() {
+  const imageCarousel = document.getElementById('imageCarousel');
+  let currentIndex = 0;
+  let listaFilmesDatabase;
 
   async function carregarFilme() {
+      listaFilmesDatabase = await getFilmes();
 
-    const listaFilmesDatabase = await getFilmes();
-    const imageCarousel = document.getElementById('imageCarousel');
-    const filmes = []
-  
-    // Carregar todas as imagens
-    listaFilmesDatabase.forEach(filme => {
-
-      const img = document.createElement('img');
-      img.src = filme.foto_capa;
-      imageCarousel.appendChild(img);
-    });
-  
-    // Trocar imagens automaticamente
-    let currentIndex = 0;
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % listaFilmesDatabase.length;
-      const img = imageCarousel.children[currentIndex];
-      img.src = listaFilmesDatabase[currentIndex].foto_capa;
-    }, 2000); // Trocar imagem a cada 3 segundos
-  
-    // Lidar com erros de carregamento
-    imageCarousel.addEventListener('error', (event) => {
-      const img = event.target;
-      console.log(`Erro ao carregar imagem: ${img.src}`); // Exibir mensagem de erro no console
-    });
-  
+      setInterval(() => {
+          currentIndex = (currentIndex + 1) % listaFilmesDatabase.length;
+          const filmeAtual = listaFilmesDatabase[currentIndex];
+          imageCarousel.style.backgroundImage = `url(${filmeAtual.foto_capa})`;
+          imageCarousel.style.backgroundSize = 'cover'
+      }, 5000); // Trocar imagem a cada 5 segundos
   }
 
   carregarFilme();
-
-
-  
 }
 
-carousel()
+// function Lista () {
+//   const listaFilmes = document.getElementById('listaFilmes');
 
-function Lista () {
-  const listaFilmes = document.getElementById('listaFilmes');
+//   function carregarFilmes() {
+//     fetch('./src/filmes.json')
+//       .then(response => response.json())
+//       .then(data => {
+//         const filmes = data.filmes;
+//         criarListaFilmes(filmes);
+//       })
+//       .catch(error => console.error('Erro ao carregar filmes:', error));
+//   }
 
-  function carregarFilmes() {
-    fetch('./src/filmes.json')
-      .then(response => response.json())
-      .then(data => {
-        const filmes = data.filmes;
-        criarListaFilmes(filmes);
-      })
-      .catch(error => console.error('Erro ao carregar filmes:', error));
-  }
+//   function criarListaFilmes(filmes) {
+//     filmes.forEach(filme => {
+//       const divFilme = document.createElement('div');
+//       divFilme.classList.add('w-80', 'listaFilmes', 'flex-shrink-0'); // Adiciona a classe listaFilmes
 
-  function criarListaFilmes(filmes) {
-    filmes.forEach(filme => {
-      const divFilme = document.createElement('div');
-      divFilme.classList.add('w-80', 'listaFilmes', 'flex-shrink-0'); // Adiciona a classe listaFilmes
+//       const imagemFilme = document.createElement('img');
+//       imagemFilme.src = filme.imagem;
+//       imagemFilme.alt = filme.titulo;
+//       imagemFilme.classList.add('w-full', 'h-auto', 'cursor-pointer'); // Estilos do Tailwind
+//       imagemFilme.setAttribute('data-id', filme.id); // Adiciona o atributo `data-id` com o ID do filme
 
-      const imagemFilme = document.createElement('img');
-      imagemFilme.src = filme.imagem;
-      imagemFilme.alt = filme.titulo;
-      imagemFilme.classList.add('w-full', 'h-auto', 'cursor-pointer'); // Estilos do Tailwind
-      imagemFilme.setAttribute('data-id', filme.id); // Adiciona o atributo `data-id` com o ID do filme
-
-      divFilme.appendChild(imagemFilme);
-      listaFilmes.appendChild(divFilme);
+//       divFilme.appendChild(imagemFilme);
+//       listaFilmes.appendChild(divFilme);
       
-      divFilme.addEventListener('click', ()=>{abrirCampoInfo(filme.id)})
-    });
-  }
+//       divFilme.addEventListener('click', ()=>{abrirCampoInfo(filme.id)})
+//     });
+//   }
 
-  function abrirCampoInfo(id){
-    campoInfoFilme.style.visibility='visible'
-    console.log(id)
-  }
+//   function abrirCampoInfo(id){
+//     campoInfoFilme.style.visibility='visible'
+//     console.log(id)
+//   }
 
-  carregarFilmes();
+//   carregarFilmes();
 
-  function showOverlay() {
-    var overlay = document.getElementById('overlay');
-    overlay.style.display = 'block';
-  }
+//   function showOverlay() {
+//     var overlay = document.getElementById('overlay');
+//     overlay.style.display = 'block';
+//   }
 
-function buscarInformacoesFilme(idFilme) {
+// function buscarInformacoesFilme(idFilme) {
 
 
-    // Verifique se a variável filmes está definida
-const filmes = listaFilmes;
+//     // Verifique se a variável filmes está definida
+// const filmes = listaFilmes;
 
-    if (filmes) {
-        // Busca o filme no JSON
-        const filme = filmes.find(filme => filme.id === idFilme);
+//     if (filmes) {
+//         // Busca o filme no JSON
+//         const filme = filmes.find(filme => filme.id === idFilme);
 
-        if(filmes) {
-         console.log('Filme encontrado:', filme);
-         } else {  console.error("O filme com o ID especificado não foi encontrado.");
-         }
-    } else {
-        console.error("A variável 'filmes' não foi inicializada corretamente.");
-    }
+//         if(filmes) {
+//          console.log('Filme encontrado:', filme);
+//          } else {  console.error("O filme com o ID especificado não foi encontrado.");
+//          }
+//     } else {
+//         console.error("A variável 'filmes' não foi inicializada corretamente.");
+//     }
 
   
-    // Cria a nova div com as informações do filme
-    const novaDiv = document.createElement('div');
-    novaDiv.classList.add('bg-black', 'bg-opacity-75', 'absolute', 'top-0', 'left-0', 'w-full', 'h-full', 'flex', 'justify-center', 'items-center');
+//     // Cria a nova div com as informações do filme
+//     const novaDiv = document.createElement('div');
+//     novaDiv.classList.add('bg-black', 'bg-opacity-75', 'absolute', 'top-0', 'left-0', 'w-full', 'h-full', 'flex', 'justify-center', 'items-center');
 
-    const body = document.getElementById('body')
-    body.style.display='none'
-    novaDiv
-    const conteudoDiv = `
-      <div class="w-full max-w-md bg-white rounded-lg p-4">
-        <img src="${filme.imagem}" class="w-full h-auto mb-4" />
-        <h2 class="text-2xl font-bold mb-2">${filme.titulo}</h2>
-        <ul class="list-none">
-          <li><span class="font-bold">Sinopse:</span> ${filme.sinopse}</li>
-          <li><span class="font-bold">Data de lançamento:</span> ${filme.dataLancamento}</li>
-          <li><span class="font-bold">Duração:</span> ${filme.duracao}</li>
-          <li><span class="font-bold">Preço:</span> ${filme.preco}</li>
-        </ul>
-      </div>
-    `;
+//     const body = document.getElementById('body')
+//     body.style.display='none'
+//     novaDiv
+//     const conteudoDiv = `
+//       <div class="w-full max-w-md bg-white rounded-lg p-4">
+//         <img src="${filme.imagem}" class="w-full h-auto mb-4" />
+//         <h2 class="text-2xl font-bold mb-2">${filme.titulo}</h2>
+//         <ul class="list-none">
+//           <li><span class="font-bold">Sinopse:</span> ${filme.sinopse}</li>
+//           <li><span class="font-bold">Data de lançamento:</span> ${filme.dataLancamento}</li>
+//           <li><span class="font-bold">Duração:</span> ${filme.duracao}</li>
+//           <li><span class="font-bold">Preço:</span> ${filme.preco}</li>
+//         </ul>
+//       </div>
+//     `;
 
-    novaDiv.innerHTML = conteudoDiv;
+//     novaDiv.innerHTML = conteudoDiv;
 
-    // Exibe a nova div na tela
-    document.body.appendChild(novaDiv);
+//     // Exibe a nova div na tela
+//     document.body.appendChild(novaDiv);
 
-    showOverlay(); // Exibe a overlay após a criação da nova div
-  }
+//     showOverlay(); // Exibe a overlay após a criação da nova div
+//   }
 
-  listaFilmes.addEventListener('click', (event) => {
-    // Pega o elemento que foi clicado
-    const elementoClicado = event.target;
+//   listaFilmes.addEventListener('click', (event) => {
+//     // Pega o elemento que foi clicado
+//     const elementoClicado = event.target;
 
-    // Verifica se o elemento clicado é uma imagem
-    if (elementoClicado.tagName === 'IMG') {
-      // Pega o ID do filme a partir do atributo `data-id` da imagem
-      const idFilme = elementoClicado.getAttribute('data-id');
+//     // Verifica se o elemento clicado é uma imagem
+//     if (elementoClicado.tagName === 'IMG') {
+//       // Pega o ID do filme a partir do atributo `data-id` da imagem
+//       const idFilme = elementoClicado.getAttribute('data-id');
 
-      // Exibe o ID do filme no console para verificar
-      console.log(`ID do filme: ${idFilme}`);
+//       // Exibe o ID do filme no console para verificar
+//       console.log(`ID do filme: ${idFilme}`);
 
-      // Chama a função para buscar e exibir as informações do filme
-      buscarInformacoesFilme(idFilme) 
-    }
-  });
-}
-Lista()
-
+//       // Chama a função para buscar e exibir as informações do filme
+//       buscarInformacoesFilme(idFilme) 
+//     }
+//   });
+// }
+// Lista()
+carousel()
 
