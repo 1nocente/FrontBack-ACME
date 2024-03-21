@@ -1,0 +1,34 @@
+.filme {
+    width: 16rem;
+    height: 8rem; /* Você pode ajustar a altura conforme necessário */
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+#listaFilmes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaçamento entre as divs dos filmes */
+}
+
+.fundo_preto{
+    height: 64vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    z-index: 2;
+    visibility: hidden;
+}
+
+.aparecer_fundo{
+    visibility: visible;
+    margin-top: 9vh;
+    background-color: black;
+
+}
+
+
+
+
+ 

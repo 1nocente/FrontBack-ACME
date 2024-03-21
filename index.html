@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./app.js" type="module" defer></script>
+  <link rel="stylesheet" href="style.css">
   <title>Acme</title>
 </head>
 
 <body id="body" class="overflow-x-hidden">
+  <div id="fundo"  class="fundo_preto"></div>
 
   <div class="infoFilme" style="visibility: hidden;" id="infoFilme">
     <img class="h-60 mt-28" id="imagemInfoFilme" alt="">
@@ -36,7 +38,7 @@
       <img class="mt-9" src="./src/styles/img/LOGO.png" alt="">
 
       <div class="pl-14 flex items-center space-x-8">
-        <a href="#" class="font-light text-3xl text-white">HOME</a>
+        <a href="./index.html" class="font-light text-3xl text-white">HOME</a>
         <a href="#" class="font-light text-3xl text-white ">FILMES</a>
         <a href="#" class="font-light text-3xl text-white ">SERIES</a>
       </div>
@@ -53,8 +55,8 @@
   <div class="h-0.5 bg-white"></div>
 
   <!-- Carrossel no main -->
-  <main class="bg-black bg-no-repeat relative h-screen bg-">
-    <div id="imageCarousel" class="flex justify-center h-full">
+  <main class="bg-black bg-no-repeat relative h-screen">
+    <div id="imageCarousel" class="flex justify-center h-5/6 w-6/6">
     </div>
 
 
@@ -64,6 +66,8 @@
         <!-- A lista de filmes será adicionada aqui dinamicamente -->
       </div>
     </div>
+
+    <div id="detalhesFilme" class=""></div>
   </main>
 </body>
 
