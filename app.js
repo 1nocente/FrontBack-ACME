@@ -104,6 +104,9 @@ function exibirDetalhes(filme) {
     dataLancamento.style.fontSize = '2.5vh'
     divDetalhes.appendChild(dataLancamento);
 
+
+
+
     imageCarousel.appendChild(divDetalhes);
 
     const duracao = document.createElement("h2");
@@ -112,6 +115,13 @@ function exibirDetalhes(filme) {
     duracao.style.fontSize = '2.5vh'
     divDetalhes.appendChild(duracao);
 
+    
+ // Sinopse
+ const sinopse = document.createElement("h2");
+ sinopse.style.color = 'white'
+ sinopse.textContent = `Sinopse: ${filme.sinopse}`;
+ sinopse.style.fontSize = '2.5vh'
+ divDetalhes.appendChild(sinopse);
 
     
 }
