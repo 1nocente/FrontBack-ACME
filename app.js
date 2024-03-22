@@ -89,12 +89,40 @@ function exibirDetalhes(filme) {
     tituloFilme.textContent = `Titulo : ${filme.nome}`
     divDetalhes.appendChild(tituloFilme)
 
+     // Container para as imagens
+const imagensContainer = document.createElement('div');
+imagensContainer.style.display = 'flex'; // Configura o contêiner para usar flexbox
+imagensContainer.style.alignItems = 'center'; // Alinha os itens verticalmente no centro
+imagensContainer.style.gap = '10px'; // Espaçamento entre as imagens
+
+// Primeira imagem
+const comprarImagem = document.createElement('img');
+comprarImagem.src = './src/styles/img/comprar.png';
+comprarImagem.alt = 'Comprar'; // Adicione uma descrição adequada para acessibilidade
+comprarImagem.style.cursor = 'pointer'; // Altera o cursor ao passar o mouse sobre a imagem
+
+// Segunda imagem
+const assistirImagem = document.createElement('img');
+assistirImagem.src = './src/styles/img/assistir.png';
+assistirImagem.alt = 'Assistir'; // Adicione uma descrição adequada para acessibilidade
+assistirImagem.style.cursor = 'pointer'; // Altera o cursor ao passar o mouse sobre a imagem
+
+// Adiciona as imagens ao contêiner
+imagensContainer.appendChild(comprarImagem);
+imagensContainer.appendChild(assistirImagem);
+
+// Adiciona o contêiner de imagens ao divDetalhes
+divDetalhes.appendChild(imagensContainer);
+   
     // valor do filme
     const valorFilme = document.createElement('h2')
    valorFilme.style.color = 'white'
    valorFilme.textContent = `Valor: $${filme.valor_unitario.toFixed(2)}`
     valorFilme.style.fontSize = '2.5vh'
    divDetalhes.appendChild(valorFilme)
+
+  
+
 
 
     // Data lancamento
@@ -115,7 +143,7 @@ function exibirDetalhes(filme) {
     duracao.style.fontSize = '2.5vh'
     divDetalhes.appendChild(duracao);
 
-    
+
  // Sinopse
  const sinopse = document.createElement("h2");
  sinopse.style.color = 'white'
