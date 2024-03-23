@@ -1,11 +1,34 @@
 import { getFilmes } from "../filmes.js";
 
+// Função para contar e exibir o número de filmes cadastrados
+async function contarFilmes() {
+    try {
+        const filmes = await getFilmes(); // Obter a lista de filmes
+        const contador = document.getElementById('contador-filmes'); // Selecionar o elemento onde o contador será exibido
+
+        if (filmes.length === 1) {
+            contador.textContent = `${filmes.length} filme cadastrado atualmente`;
+        } else {
+            contador.textContent = `${filmes.length} filmes cadastrados atualmente`;
+        }
+    } catch (error) {
+        console.error("Erro ao contar filmes:", error);
+    }
+}
+
+// Função para recarregar a página
+function recarregarPagina() {
+    window.location.reload();
+}
+
 // Função para criar e exibir os detalhes de cada filme
 async function exibirFilmes() {
     try {
+        await contarFilmes(); // Contar e exibir o número de filmes cadastrados
         const filmes = await getFilmes(); // Obter a lista de filmes
 
         const informacoesDiv = document.getElementById('informações'); // Selecionar a div onde as informações dos filmes serão exibidas
+        informacoesDiv.innerHTML = ''; // Limpar o conteúdo antes de adicionar os filmes novamente
 
         filmes.forEach(filme => {
             // Criar uma div para cada filme
@@ -40,8 +63,9 @@ async function exibirFilmes() {
             const lixeiraImg = document.createElement('img');
             lixeiraImg.classList.add('h-full', 'w-16');
             lixeiraImg.src = '../src/styles/img/lixo.png';
-            lixeiraImg.style.marginLeft = '20vw'
-            lixeiraImg.style.cursor = 'pointer'
+            lixeiraImg.style.marginLeft = '20vw';
+            lixeiraImg.style.cursor = 'pointer';
+            lixeiraImg.addEventListener('click', () => confirmarExclusao(filme.id));
             filmeDiv.appendChild(lixeiraImg);
 
             // Adicionar a div do filme à div de informações
@@ -62,6 +86,42 @@ function validarData(data) {
     const dataSplit = dataReduzida.split('-');
     const dataFinal = dataSplit[2] + '/' + dataSplit[1] + '/' + dataSplit[0];
     return dataFinal;
+}
+
+// Função para confirmar a exclusão de um filme
+function confirmarExclusao(idFilme) {
+    if (confirm("Tem certeza que deseja continuar? Isto apagará o filme para sempre!")) {
+        excluirFilme(idFilme);
+    } else {
+        // Nenhuma ação necessária, o usuário optou por não excluir o filme
+    }
+}
+
+// Função para excluir um filme
+async function excluirFilme(idFilme) {
+    try {
+        const url = `http://localhost:8080/v2/acmefilmes/filme/${idFilme}`;
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+                // Se necessário, adicione quaisquer headers de autenticação aqui
+            }
+        });
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(data.message); // Exibir mensagem de sucesso
+            // Atualizar a lista de filmes após a exclusão (opcional)
+            exibirFilmes();
+            recarregarPagina();
+        } else {
+            alert(data.message); // Exibir mensagem de erro
+        }
+    } catch (error) {
+        console.error("Erro ao excluir filme:", error);
+        alert("Erro ao excluir filme. Por favor, tente novamente mais tarde.");
+    }
 }
 
 // Chamar a função para exibir os filmes quando a página carregar
