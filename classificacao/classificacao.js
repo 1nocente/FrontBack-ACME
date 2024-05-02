@@ -55,10 +55,11 @@ async function exibirClassificacoes() {
             classificacaoDiv.appendChild(nomeSpan);
 
             // Icone
-            const iconeSpan = document.createElement('span');
-            iconeSpan.classList.add('min-w-96', 'text-center', 'mr-20');
-            iconeSpan.textContent = classificacao.icone;
-            classificacaoDiv.appendChild(iconeSpan);
+            const iconeImg = document.createElement('img');
+            iconeImg.classList.add('h-full', 'w-16', 'text-center', 'ml-40');
+            iconeImg.src = classificacao.icone; // Define o src da imagem como a URL do ícone
+            iconeImg.alt = classificacao.faixa_etaria; // Define um texto alternativo para acessibilidade
+            classificacaoDiv.appendChild(iconeImg);
 
             // Lixeira
             const lixeiraImg = document.createElement('img');

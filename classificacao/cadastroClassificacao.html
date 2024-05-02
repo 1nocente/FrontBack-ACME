@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./cadastroClassificacao.js" defer type="module"></script>
+    <script src="../classificacoes.js" defer type="module"></script>
+    <title>ACME CADASTRO</title>
+</head>
+<body class="bg-black">
+    <header class="h-0">
+        <a href="./classificacao.html">
+            <img class="p-8" src="../src/styles/img/LOGO.png" alt="">
+        </a>
+    </header>
+    <div class="flex flex-col items-center justify-center min-h-screen bg-black pb-80">
+        <div class="pt-24 w-full max-w-sm flex flex-col items-center">
+            <h1 class="text-white text-3xl font-bold">CADASTRAR NOVA CLASSIFICAÇÃO</h1>
+            <div class="w-96 bg-white rounded-lg shadow-md p-8">
+                <form id="classificacaoForm">
+                    <div class="mb-4">
+                        <label for="faixaEtaria" class="block text-gray-700 font-bold mb-2">FAIXA ETÁRIA</label>
+                        <input type="text" id="faixaEtaria" name="faixaEtaria" required class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                    </div>
+                    <div class="mb-4">
+                        <label for="classificacao" class="block text-gray-700 font-bold mb-2">CLASSIFICAÇÃO</label>
+                        <input type="text" id="classificacao" name="classificacao" required class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                    </div>
+                    <div class="mb-4">
+                        <label for="caracteristica" class="block text-gray-700 font-bold mb-2">CARACTERÍSTICA</label>
+                        <input type="text" id="caracteristica" name="caracteristica" required class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                    </div>
+                    <div class="mb-4">
+                        <label for="icone" class="block text-gray-700 font-bold mb-2">ÍCONE</label>
+                        <input type="text" id="icone" name="icone" required class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <div id="cadastrarClassificacaoButton" class="cursor-pointer pt-10 rounded-lg h-full w-96">
+            <div class="bg-white rounded-lg shadow-md">
+                <h1 class="text-2xl font-semibold text-center mb-6">CADASTRAR CLASSIFICAÇÃO</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

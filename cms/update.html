@@ -1,1 +1,40 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Filme</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./editarFilme.js" defer></script> <!-- Script para lidar com a edição do filme -->
+</head>
+<body class="bg-black">
+    <div class="flex flex-col items-center justify-center min-h-screen bg-black py-10">
+        <h1 class="text-white text-3xl font-bold mb-10">Editar Filme</h1>
+        <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+            <form id="editarFilmeForm" class="flex flex-col gap-4">
+                <input type="hidden" id="filmeId"> <!-- Input hidden para armazenar o ID do filme -->
+                <div class="mb-4">
+                    <label for="nomeFilme" class="block text-gray-700 font-bold mb-2">Nome do Filme</label>
+                    <input type="text" id="nomeFilme" name="nomeFilme" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                </div>
+                <!-- Outros campos de edição do filme (sinopse, duração, data de lançamento, etc.) -->
+                <!-- Seleção de atores e diretores -->
+                <div class="mb-4">
+                    <label for="atores" class="block text-gray-700 font-bold mb-2">Atores</label>
+                    <select id="atores" name="atores[]" multiple class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                        <!-- Options para os atores serão populados dinamicamente -->
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="diretores" class="block text-gray-700 font-bold mb-2">Diretores</label>
+                    <select id="diretores" name="diretores[]" multiple class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                        <!-- Options para os diretores serão populados dinamicamente -->
+                    </select>
+                </div>
+                <!-- Botão de atualizar filme -->
+                <button type="submit" class="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Atualizar Filme</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
