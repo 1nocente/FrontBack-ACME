@@ -144,6 +144,14 @@ divDetalhes.appendChild(imagensContainer);
     divDetalhes.appendChild(duracao);
 
 
+const generos = document.createElement("h2");
+ generos.style.color = 'white';
+ generos.textContent = `Gênero: ${filme.generos.join(', ')}`;
+ generos.style.fontSize = '2.5vh';
+ divDetalhes.appendChild(generos);
+
+ 
+
  // Sinopse
  const sinopse = document.createElement("h2");
  sinopse.style.color = 'white'
@@ -151,8 +159,23 @@ divDetalhes.appendChild(imagensContainer);
  sinopse.style.fontSize = '2.5vh'
  divDetalhes.appendChild(sinopse);
 
-    
-}
+ const elenco = document.createElement("h2");
+ elenco.style.color = 'white';
+ elenco.textContent = `Estrelando: ${filme.atores.join(', ')}`;
+ elenco.style.fontSize = '2.5vh';
+ divDetalhes.appendChild(elenco);
+ 
+ 
+ const diretores = document.createElement("h2");
+ diretores.style.color = 'white';
+ diretores.textContent = `Dirigido Por: ${filme.diretores.join(', ')}`;
+ diretores.style.fontSize = '2.5vh';
+ divDetalhes.appendChild(diretores);
+
+ }
+
+
+
 
 
 function validarData (data) {

@@ -6,6 +6,7 @@ export async function getFilmes(){
     return data.filmes
 }
 
+
 export async function getImage(){
     const url = 'http://localhost:8080/v2/AcmeFilmes/filmes'
     const response = await fetch(url)
