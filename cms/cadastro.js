@@ -3,6 +3,57 @@ import { postFilme } from '../filmes.js';
 import { getAtores } from '../atores.js';
 import { getDiretores } from '../diretores.js';
 import { getClassificacoes } from '../classificacoes.js';
+import { getGeneros } from '../generos.js'; // Importa a função getGeneros do arquivo generos.js
+
+
+
+
+async function carregarGeneros() {
+    const generos = await getGeneros(); // Obtém os gêneros usando a função getGeneros
+
+    // Popula o select de gêneros
+    const selectGeneros = document.getElementById('generos');
+    generos.forEach(genero => {
+        const option = document.createElement('option');
+        option.value = genero.id; // Use o ID do gênero como valor
+        option.textContent = genero.nome;
+        selectGeneros.appendChild(option);
+    });
+}
+
+let generosSelecionados = [];
+
+// Função para selecionar os gêneros
+// Função para selecionar os gêneros
+function selecionarGenero() {
+    const selectGeneros = document.getElementById('generos');
+    generosSelecionados = Array.from(selectGeneros.selectedOptions).map(option => option.value);
+
+    // Atualiza o JSON com os gêneros selecionados
+    atualizarJson();
+
+    // Loop pelos options do select de gêneros para aplicar estilo
+    Array.from(selectGeneros.options).forEach(option => {
+        if (generosSelecionados.includes(option.value)) {
+            option.style.backgroundColor = 'lightblue'; // Define a cor de fundo para gêneros selecionados
+        } else {
+            option.style.backgroundColor = ''; // Remove a cor de fundo para gêneros não selecionados
+        }
+    });
+}
+
+// Adiciona um evento de mudança ao select de gêneros
+document.getElementById('generos').addEventListener('change', selecionarGenero);
+
+// Chama a função para carregar os gêneros quando a página carrega
+document.addEventListener('DOMContentLoaded', function() {
+    carregarGeneros();
+});
+
+
+
+
+
 
 
 
@@ -103,6 +154,9 @@ function selecionarDiretor(option) {
     atualizarJson();
 }
 
+
+
+
 function atualizarJson() {
     const nomeFilme = document.getElementById('nomeFilme').value;
     const sinopse = document.getElementById('sinopse').value;
@@ -122,7 +176,8 @@ function atualizarJson() {
         "valor_unitario": valor,
         "id_classificacao": classificacaoSelecionada,
         "elenco": atoresSelecionados,
-        "diretor": diretoresSelecionados
+        "diretor": diretoresSelecionados,
+        "genero": generosSelecionados
     };
 
     console.log(filme); // Exibe o objeto filme no console para depuração
@@ -147,7 +202,8 @@ async function enviarFilme() {
         "valor_unitario": valor,
         "id_classificacao": classificacaoSelecionada,
         "elenco": atoresSelecionados,
-        "diretor": diretoresSelecionados
+        "diretor": diretoresSelecionados,
+        "genero": generosSelecionados
     };
 
     console.log(filme);
