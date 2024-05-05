@@ -5,3 +5,19 @@ export async function getAtores(){
 
     return data
 }
+
+export async function postAtor (ator) {
+    const url = 'http://localhost:8080/v2/acmeFilmes/ator'
+    const options = {
+        method : 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify (ator)
+    }
+
+    const response = await fetch(url, options)
+
+    return response.ok
+}
+
