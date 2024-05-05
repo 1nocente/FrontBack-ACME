@@ -50,6 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
     carregarGeneros();
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    flatpickr("#duracao", {
+        enableTime: true, // Permite que o usuário selecione a hora
+        noCalendar: true, // Remove o calendário
+        dateFormat: "H:i:S", // Formato da hora (hora:minuto:segundo)
+        time_24hr: true // Usa o formato de 24 horas
+    });
+});
 
 
 
@@ -110,12 +118,12 @@ let classificacaoSelecionada = null;
 // Função para selecionar a classificação
 function selecionarClassificacao() {
     const selectClassificacao = document.getElementById('classificacao');
+    console.log(selectClassificacao); // Verifique se o elemento está sendo encontrado corretamente
     classificacaoSelecionada = selectClassificacao.value;
 
     // Atualiza o JSON com a classificação selecionada
     atualizarJson();
 }
-
 function selecionarAtor(option) {
     const atorId = option.value;
 

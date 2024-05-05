@@ -1,39 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Filme</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./editarFilme.js" defer></script> <!-- Script para lidar com a edição do filme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./update.js" defer type="module"></script>
+    <title>Atualizar Filme</title>
 </head>
-<body class="bg-black">
-    <div class="flex flex-col items-center justify-center min-h-screen bg-black py-10">
-        <h1 class="text-white text-3xl font-bold mb-10">Editar Filme</h1>
-        <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-            <form id="editarFilmeForm" class="flex flex-col gap-4">
-                <input type="hidden" id="filmeId"> <!-- Input hidden para armazenar o ID do filme -->
-                <div class="mb-4">
-                    <label for="nomeFilme" class="block text-gray-700 font-bold mb-2">Nome do Filme</label>
-                    <input type="text" id="nomeFilme" name="nomeFilme" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+
+<body class="bg-black ">
+    <header class="h-0">
+        <a href="./dashboard.html">
+            <img class="p-8" src="../src/styles/img/LOGO.png" alt="">
+        </a>
+    </header>
+    <div class="flex flex-col items-center justify-center min-h-screen bg-black pb-80">
+        <div class=" pt-24 w-full max-w-sm flex flex-col items-center">
+            <h1 class="text-white text-3xl font-bold"> ATUALIZAR FILME</h1>
+            <div class="w-96 bg-white rounded-lg shadow-md p-8">
+                <form id="updateForm">
+                    <div class="mb-4">
+                        <label for="idFilme" class="block text-gray-700 font-bold mb-2">ID do Filme</label>
+                        <select id="idFilme" name="idFilme" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                            <!-- Options for film IDs will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="nomeFilme" class="block text-gray-700 font-bold mb-2">Nome do Filme</label>
+                        <input type="text" id="nomeFilme" name="nomeFilme" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="sinopse" class="block text-gray-700 font-bold mb-2">Sinopse</label>
+                        <input type="text" id="sinopse" name="sinopse" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="midiaFilme" class="block text-gray-700 font-bold mb-2">Mídia do Filme</label>
+                        <input type="text" id="midiaFilme" name="midiaFilme" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="dataLancamento" class="block text-gray-700 font-bold mb-2">Data de Lançamento</label>
+                        <input type="date" id="dataLancamento" name="dataLancamento" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="duracao" class="block text-gray-700 font-bold mb-2">Duração</label>
+                        <input type="text" id="duracao" name="duracao" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                    </div>                                        
+                    <div class="mb-4">
+                        <label for="valor" class="block text-gray-700 font-bold mb-2">Valor Unitário</label>
+                        <input type="number" id="valor" name="valor" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="classificacao" class="block text-gray-700 font-bold mb-2">Classificação</label>
+                        <select id="classificacao" name="classificacao" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                            <!-- Options for classifications will be populated dynamically -->
+                        </select>
+                    </div>
+                </form>
+               
+            </div>
+            <div class="cursor-pointer pt-10 rounded-lg h-full w-96">
+                <div id="atualizarButton" class="bg-white rounded-lg shadow-md">
+                    <h1 class="text-2xl font-semibold text-center mb-6">ATUALIZAR FILME</h1>
                 </div>
-                <!-- Outros campos de edição do filme (sinopse, duração, data de lançamento, etc.) -->
-                <!-- Seleção de atores e diretores -->
-                <div class="mb-4">
-                    <label for="atores" class="block text-gray-700 font-bold mb-2">Atores</label>
-                    <select id="atores" name="atores[]" multiple class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
-                        <!-- Options para os atores serão populados dinamicamente -->
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label for="diretores" class="block text-gray-700 font-bold mb-2">Diretores</label>
-                    <select id="diretores" name="diretores[]" multiple class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
-                        <!-- Options para os diretores serão populados dinamicamente -->
-                    </select>
-                </div>
-                <!-- Botão de atualizar filme -->
-                <button type="submit" class="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Atualizar Filme</button>
-            </form>
+            </div>
         </div>
     </div>
 </body>

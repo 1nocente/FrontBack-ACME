@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./cadastro.js" defer type="module"></script>
     <script src="../filmes.js" defer type="module"></script>
-    <title>ACME CADASTRO</title> 
+    <title>ACME CADASTRO</title>
 </head>
 
 <body class="bg-black ">
@@ -43,20 +45,26 @@
                     <div class="mb-4">
                         <label for="dataLancamento" class="block text-gray-700 font-bold mb-2">DATA DE
                             LANCAMENTO</label>
-                        <input type="dataLancamento" id="dataLancamento" name="dataLancamento" required
-                            class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                        <input type="date" id="dataLancamento" name="dataLancamento"
+                            class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none"
+                            required>
+
                     </div>
-                    <div class="mb-4">
-                        <label for="duracao" class="block text-gray-700 font-bold mb-2">DURAÇÃO</label>
-                        <input type="duracao" id="duracao" name="duracao" required
-                            class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
-                    </div>
+
                     <div class="mb-4">
                         <label for="dataRelancamento" class="block text-gray-700 font-bold mb-2">DATA DE
                             RELANCAMENTO</label>
-                        <input type="dataRelancamento" id="dataRelancamento" name="dataRelancamento" required
-                            class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                        <input type="date" id="dataRelancamento" name="dataRelancamento"
+                            class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none"
+                            required>
                     </div>
+                    <div class="mb-4">
+                        <label for="duracao" class="block text-gray-700 font-bold mb-2">Duração</label>
+                        <input type="text" id="duracao" name="duracao" class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none" required>
+                    </div>
+                    
+
+
                     <div class="mb-4">
                         <label for="valor" class="block text-gray-700 font-bold mb-2">VALOR UNITARIO</label>
                         <input type="valor" id="valor" name="valor" required
@@ -64,41 +72,36 @@
                     </div>
 
                     <label for="atores" class="block text-gray-700 font-bold mb-2">SELECIONE OS ATORES</label>
-<select id="atores" name="atores[]" multiple
-    class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
-    <!-- Options for actors will be populated dynamically -->
-</select>
+                    <select id="atores" name="atores[]" multiple
+                        class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                        <!-- Options for actors will be populated dynamically -->
+                    </select>
 
-<label for="diretores" class="block text-gray-700 font-bold mb-2">SELECIONE OS DIRETORES</label>
-<select id="diretores" name="diretores[]" multiple
-    class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
-    <!-- Options for directors will be populated dynamically -->
-</select>
-<label for="classificacao" class="block text-gray-700 font-bold mb-2">CLASSIFICAÇÃO</label>
-<select id="classificacao" name="classificacao" required
-    class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
-    <!-- Options for classifications will be populated dynamically -->
-</select>
-<label for="generos" class="block text-gray-700 font-bold mb-2">SELECIONE OS GÊNEROS</label>
-<select id="generos" name="generos[]" multiple
-    class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
-    <!-- Options for genres will be populated dynamically -->
-</select>
-
-
-            </div>
-            
+                    <label for="diretores" class="block text-gray-700 font-bold mb-2">SELECIONE OS DIRETORES</label>
+                    <select id="diretores" name="diretores[]" multiple
+                        class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                        <!-- Options for directors will be populated dynamically -->
+                    </select>
+                    <label for="classificacao" class="block text-gray-700 font-bold mb-2">CLASSIFICAÇÃO</label>
+                    <select id="classificacao" name="classificacao" required
+                        class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                        <!-- Options for classifications will be populated dynamically -->
+                    </select>
+                    <label for="generos" class="block text-gray-700 font-bold mb-2">SELECIONE OS GÊNEROS</label>
+                    <select id="generos" name="generos[]" multiple
+                        class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-primary focus:outline-none">
+                        <!-- Options for genres will be populated dynamically -->
+                    </select>
 
 
             </div>
-        </div>
-        <div id="cadastrarButton" class="cursor-pointer pt-10 rounded-lg h-full w-96 ">
-            <div class="bg-white rounded-lg shadow-md">
-                <h1 class="text-2xl font-semibold text-center mb-6">CADASTRAR FILME</h1>
-
-
-
+            <div id="cadastrarButton" class="cursor-pointer pt-10 rounded-lg h-full w-96 ">
+                <div class="bg-white rounded-lg shadow-md">
+                    <h1 class="text-2xl font-semibold text-center mb-6">CADASTRAR FILME</h1>
+                </div>
             </div>
         </div>
+
+    </div>
 
 </html>
