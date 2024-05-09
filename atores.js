@@ -6,7 +6,7 @@ export async function getAtores(){
     return data
 }
 
-export async function postAtor (ator) {
+export async function postAtores (ator) {
     const url = 'http://localhost:8080/v2/acmeFilmes/ator'
     const options = {
         method : 'POST',

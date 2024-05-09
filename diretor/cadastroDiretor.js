@@ -1,7 +1,7 @@
 // Função para enviar o filme para o servidor quando o formulário for submetido
 import { getNacionalidades } from '../nacionalidades.js';
 import { getSexos } from '../sexos.js';
-import { postAtores } from '../atores.js';
+import { postDiretores } from '../diretores.js';
 
 
 async function carregarSexosENacionalidades() {
@@ -85,42 +85,42 @@ function selecionarNacionalidade(option) {
 
 
 function atualizarJson() {
-    const nomeAtor = document.getElementById('nomeAtor').value;
+    const nomeDiretor = document.getElementById('nomeDiretor').value;
     const biografia = document.getElementById('biografia').value;
     const dataNasc = document.getElementById('dataNasc').value;
 
-    const ator = {
-        "nome": nomeAtor,
+    const diretor = {
+        "nome": nomeDiretor,
         "biografia": biografia,
         "data_nascimento": dataNasc,
         "nascionalidade": nacionalidadesSelecionados,
         "id_sexo": sexosSelecionados
     };
 
-    console.log(ator); // Exibe o objeto filme no console para depuração
+    console.log(diretor); // Exibe o objeto filme no console para depuração
 }
 
-async function enviarAtor() {
-   const nomeAtor = document.getElementById('nomeAtor').value;
+async function enviarDiretor() {
+   const nomeDiretor = document.getElementById('nomeDiretor').value;
     const biografia = document.getElementById('biografia').value;
     const dataNasc = document.getElementById('dataNasc').value;
 
-    const ator = {
-        "nome": nomeAtor,
+    const diretor = {
+        "nome": nomeDiretor,
         "biografia": biografia,
         "data_nascimento": dataNasc,
         "nacionalidade": nacionalidadesSelecionados,
         "id_sexo": sexosSelecionados
     };
 
-    console.log(ator);
+    console.log(diretor);
 
-    const cadastrado = await postAtores(ator);
+    const cadastrado = await postDiretores(diretor);
 
     if (cadastrado) {
-        alert("Ator cadastrado com sucesso!");
+        alert("diretor cadastrado com sucesso!");
     } else {
-        alert("Erro ao cadastrar ator. Por favor, tente novamente mais tarde.");
+        alert("Erro ao cadastrar diretor. Por favor, tente novamente mais tarde.");
     }
 }
 
@@ -131,5 +131,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.getElementById('cadastrarButton').addEventListener('click', function(event) {
     event.preventDefault(); // Previne o comportamento padrão do formulário
-    enviarAtor(); // Chama a função para enviar o filme
+    enviarDiretor(); // Chama a função para enviar o filme
 });
